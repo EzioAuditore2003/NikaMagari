@@ -1,0 +1,7 @@
+SpaceInternational:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "../Duckdb/nika.duckdb" #"$DUCK_DB_PATH"
+      schema: nikaDbt

@@ -1,0 +1,112 @@
+version: 2
+
+sources:
+  - name: parquet_input
+    meta:
+      external_location: "read_parquet('../sources/{name}.parquet')" #read_parquet('$PARQUET_FILES_SOURCE/{name}.parquet')
+    tables:
+      - name: channels
+        columns:
+          - name: channel_name
+            type: string
+            description: "Name of channel"
+          - name: channel_id
+            type: int
+            description: "channel unique identifier"
+      - name: customers
+        columns:
+          - name: customer_id
+            type: int
+            description: "Primary key for customers"
+          - name: first_name
+            type: string
+            description: "first name of customer"
+          - name: last_name
+            type: string
+            description: "last name of customer"
+          - name: email
+            type: string
+            description: "email of customer"
+      - name: main
+        columns:
+          - name: transaction_id
+            type: int
+            description: "Primary key for main"
+          - name: customer_id
+            type: int
+            description: "customer id referenced to customers table"
+          - name: product_id
+            type: string
+            description: "product id referenced to products table"
+          - name: amount
+            type: float
+            description: "transaction amount"
+          - name: qty
+            type: int
+            description: "product quantity"
+          - name: channel_id
+            type: int
+            description: "channel id referenced to channel table"
+          - name: bought_date
+            type: date
+            description: "date of transaction"
+      - name: products
+        columns:
+          - name: name
+            type: string
+            description: "name of product"
+          - name: city
+            type: string
+            description: "city of product"
+          - name: price
+            type: float
+            description: "product price"
+          - name: product_id
+            type: string
+            description: "The primary key for products"
+      - name: resellers
+        columns:
+          - name: reseller_id
+            type: int
+            description: "The primary key for resellers"
+          - name: reseller_name
+            type: string
+            description: "name of reseller"
+          - name: commission_pct
+            type: float
+            description: "commission percent"
+      - name: resellers_type1
+        columns:
+          - name: Product name
+            type: string
+            description: "name of product"
+          - name: Quantity
+            type: int
+            description: "quantity of product"
+          - name: Total amount
+            type: float
+            description: "amount of transaction"
+          - name: Sales Channel
+            type: string
+            description: "channel of transaction"
+          - name: Customer First Name
+            type: string
+            description: "first name of customer"
+          - name: Customer Last Name
+            type: string
+            description: "last name of customer"
+          - name: Customer Email
+            type: string
+            description: "email of customer"
+          - name: Series City
+            type: string
+            description: "city of product"
+          - name: Created Date
+            type: date
+            description: "transaction date"
+          - name: Reseller ID
+            type: int
+            description: "reseller id references resellers"
+          - name: Transaction ID
+            type: int
+            description: "The primary key of resellers_type1"
